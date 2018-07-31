@@ -144,6 +144,13 @@ li {
   margin-right: 10px;
 }
 
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .list-enter,
 .list-leave-to {
   opacity: 0;
@@ -161,18 +168,28 @@ li {
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 100px 150px;
   box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .content.custom.content-container {
   width: calc(100% - 300px);
   max-width: 780px;
   position: absolute;
-  left: 0;
-  right: 0;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.transition-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .fade-enter-active,
