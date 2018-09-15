@@ -4,8 +4,17 @@
   "description": "Vuepress theme that creates a slideshow. Markdown + Vue to slideshow generator.",
   "author": "Alex Baker me@xanderite.io",
   "license": "MIT",
+  "bin": {
+    "vue-decks": "./cli.js"
+  },
   "dependencies": {
+    "chalk": "^2.4.1",
+    "death": "^1.1.0",
     "markdown-it-attrs": "^2.3.1",
-    "prismjs": "^1.15.0"
+    "prismjs": "^1.15.0",
+    "yargs": "^12.0.1"
+  },
+  "peerDependencies": {
+    "vuepress": "^0.13.0"
   }
 }
