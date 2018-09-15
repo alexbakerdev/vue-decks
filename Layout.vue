@@ -11,23 +11,7 @@
 <script>
 import { normalize, ensureExt, resolvePage } from "./util";
 
-const FuncWrap = {
-  functional: true,
-  render: function(createElement, context) {
-    function walkChildren(vnode) {
-      if (vnode.children) {
-        vnode.children = vnode.children.map(walkChildren);
-      }
-
-      return vnode;
-    }
-
-    return context.slots();
-  }
-};
-
 export default {
-  components: { FuncWrap },
   data() {
     return {
       direction: 0,
@@ -90,11 +74,16 @@ export default {
         pages[normalize(page.path)] = page;
         return pages;
       }, {});
-      return this.$site.themeConfig.slideOrder.map(
-        path => sitePages[normalize(path)]
-      );
+      return this.slideOrder.map(path => sitePages[normalize(path)]);
     },
     slideOrder() {
+      const slideShowDataPage = this.$site.pages.find(
+        page => page.title === "$SlideshowData"
+      );
+      if (slideShowDataPage) {
+        return slideShowDataPage.frontmatter.slideOrder;
+      }
+
       if (this.$site.themeConfig && this.$site.themeConfig.slideOrder) {
         return this.$site.themeConfig.slideOrder;
       }
@@ -122,11 +111,7 @@ export default {
       if (this.$page.frontmatter.steps) {
         return this.$page.frontmatter.steps;
       }
-      console.warn(
-        `[vuepress-theme-decks] the current slide '${
-          this.$route.path
-        }' has no steps defined`
-      );
+
       return 0;
     }
   }
@@ -159,6 +144,10 @@ li {
 
 .list-leave-active {
   position: absolute;
+}
+
+.list-item {
+  transition: all ease .5s;
 }
 
 .theme-container {
