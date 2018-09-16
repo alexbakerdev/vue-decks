@@ -107,7 +107,7 @@ function splitToFiles(resolvedFile, resolvedFolder) {
   const content = fs.readFileSync(resolvedFile, { encoding: "utf8" });
   console.log(resolvedFile, "content", content);
   if (content) {
-    const slides = content.split("\n~~~\n").map((content, i) => {
+    const slides = content.split("\n===\n").map((content, i) => {
       const title = inferTitle(parseFrontmatter(content)) || `Slide ${i + 1}`;
       const data = { title, content };
       const slugifyTitle = slugify(title);
