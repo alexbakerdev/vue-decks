@@ -16,5 +16,8 @@
   },
   "peerDependencies": {
     "vuepress": "^0.13.0"
+  },
+  "devDependencies": {
+    "vuepress": "^0.14.4"
   }
 }
