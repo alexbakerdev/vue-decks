@@ -147,7 +147,8 @@ li {
 }
 
 .list-item {
-  transition: all ease .5s;
+  transition: all ease 0.5s;
+  width: 100%;
 }
 
 .theme-container {
